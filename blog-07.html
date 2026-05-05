@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07 Building our Exhibit — The Living Record</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Image overlay for expandable images -->
+  <div class="img-overlay" id="img-overlay">
+    <button class="img-overlay-close" id="img-overlay-close">✕ Close</button>
+    <div class="img-overlay-inner" id="img-overlay-inner">
+      <img id="img-overlay-img" src="" alt="">
+    </div>
+  </div>
+
+  <nav class="site-nav site-nav--dark">
+    <a href="index.html" class="nav-logo">The Living Record</a>
+    <ul class="nav-links">
+      <li><a href="blog-01.html">01</a></li>
+      <li><a href="blog-02.html">02</a></li>
+      <li><a href="blog-03.html">03</a></li>
+      <li><a href="blog-04.html">04</a></li>
+      <li><a href="blog-05.html">05</a></li>
+      <li><a href="blog-06.html">06</a></li>
+      <li><a href="blog-07.html" class="active">07</a></li>
+      <li><a href="blog-08.html">08</a></li>
+    </ul>
+  </nav>
+
+  <header class="post-header">
+    <a href="index.html" class="label back-link">← All Posts</a>
+    <h1>07 Building our Exhibit</h1>
+    <img class="post-header-diamond" src="assets/ideation-process/double-diamond-phases/4-deliver-double-diamond.png" alt="Deliver — Double Diamond">
+  </header>
+
+  <article class="post-content">
+
+    <span class="label post-date">May 5th, 2026</span>
+
+    <p>With a fully specified exhibit and a clear focus on the garden room, it was time to build.</p>
+
+    <h2>Three Guiding Principles</h2>
+
+    <div class="img-row" style="justify-content:space-between; align-items:flex-end; margin-bottom:1rem;">
+      <div style="width:25%; min-width:0;">
+        <img src="assets/web/translation-services-sketch.jpg" alt="Translation services sketch" style="width:60%; display:block; border-radius:3px; height:auto; margin:0 auto;">
+        <span class="caption" style="text-align:center; display:block; margin-bottom:0;">Translation Access</span>
+      </div>
+      <div style="width:25%; min-width:0;">
+        <img src="assets/ideation-process/sketches/image-focused-sketch.png" alt="Image focused sketch" style="width:60%; display:block; border-radius:3px; height:auto; margin:0 auto;">
+        <span class="caption" style="text-align:center; display:block; margin-bottom:0;">Visual Storytelling</span>
+      </div>
+      <div style="width:25%; min-width:0;">
+        <img src="assets/ideation-process/sketches/intuitive-navigation-sketch.png" alt="Intuitive navigation sketch" style="width:60%; display:block; border-radius:3px; height:auto; margin:0 auto;">
+        <span class="caption" style="text-align:center; display:block; margin-bottom:0;">Intuitive Navigation</span>
+      </div>
+    </div>
+
+    <p>Three principles guided everything we built: translation access (the exhibit needed to work for international visitors who might not read English), visual storytelling (data should be felt before it's explained), and intuitive navigation.</p>
+
+    <h2>3D Modelling & AI Imagery</h2>
+    <p>We divided the work by skill and interest. Sydney built the 3D model of the entire exhibit in Blender. To render the walls of each room, we worked as a team using Adobe Firefly to generate images that reflected the data visualizations we'd specified such as an eDNA species prevelance visualizations for the microbe room and an acoustic sound-wave artwork for the audio level room.</p>
+
+    <img class="expandable-img post-inline-img" src="assets/final-artifacts/exhibit-model-still.png" alt="Exhibit model" style="width:100%; margin:0;">
+    <span class="caption">3D Exhibit Model — Blender</span>
+
+    <div class="img-row" style="margin-top:0.5rem;">
+      <div style="flex:1; min-width:0;">
+        <img class="expandable-img" src="assets/wall1.png" alt="Wall visualisation 1" style="width:100%; display:block; border-radius:3px; height:auto;">
+      </div>
+      <div style="flex:1; min-width:0;">
+        <img class="expandable-img" src="assets/wall2.png" alt="Wall visualisation 2" style="width:100%; display:block; border-radius:3px; height:auto;">
+      </div>
+      <div style="flex:1; min-width:0;">
+        <img class="expandable-img" src="assets/wall3.png" alt="Wall visualisation 3" style="width:100%; display:block; border-radius:3px; height:auto;">
+      </div>
+    </div>
+    <span class="caption">AI-Generated Wall Visualisations — Adobe Firefly</span>
+
+    <h2>Prototypes</h2>
+    <p>For prototypes, Sydney programmed the model to be clickable and interactive. I then built the garden room prototypes by using Figma and then Gemini's Nano Banana image generator to place the interactions into the garden room landscape.</p>
+
+    <div style="display:flex; flex-direction:column; gap:1.25rem;">
+      <div>
+        <video src="assets/final-artifacts/3D-Model-Demo.mov" muted loop playsinline autoplay id="cover-video" style="width:100%; height:auto; display:block; border-radius:3px;"></video>
+        <span class="caption">The Living Record — Exhibit Walkthrough</span>
+      </div>
+      <div>
+        <video src="assets/final-artifacts/Control-Panel-Prototype-Demo.mov" muted loop playsinline autoplay id="control-panel-vid" style="width:100%; height:auto; display:block; border-radius:3px;"></video>
+        <span class="caption">Weather Control Panel Prototype</span>
+      </div>
+      <div>
+        <video src="assets/final-artifacts/Kiosk-Prototype-Demo.mov" muted loop playsinline autoplay id="kiosk-vid" style="width:100%; height:auto; display:block; border-radius:3px;"></video>
+        <span class="caption">Habitat Kiosk Prototype</span>
+      </div>
+    </div>
+
+    <h2>A Note on Vibe Coding</h2>
+    <p>This stage pushed me to develop real strategies for AI image generation, thinking carefully about dimensions, output style, and data accuracy. Getting an AI to produce something that reads as a genuine data visualisation rather than a decorative mush requires very deliberate prompting. Speaking of AI as a creative tool: a quick meta note on this blog itself. Since our vibe coding session with Richard, I've been looking for more ways to practice this technique. I decided to vibe code this blog site rather than using Wix or a similar no-code platform, and that decision has given me a level of creative control I wouldn't have had otherwise, like in the hero section on the main page, where I was able to add in micro-interactions to illustrate different aspects of the project. It has felt like an extension of what we've discussed about AI throughout this course — using it not as a shortcut, but as a way to be creative beyond my own technical limitations.</p>
+
+    <p>Next up: the final presentation and what I learned from communicating our work.</p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="blog-06.html" class="post-nav-link">← 06 Previous</a>
+    <a href="blog-08.html" class="post-nav-link">08 Next →</a>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="label">The Living Record — INM 391 Creativity in Design</span>
+  </footer>
+
+  <script>
+    // Show controls on hover for all autoplay videos
+    document.querySelectorAll('video[autoplay]').forEach(v => {
+      v.addEventListener('mouseenter', () => v.setAttribute('controls', ''));
+      v.addEventListener('mouseleave', () => v.removeAttribute('controls'));
+    });
+
+    // Expandable images
+    const overlay    = document.getElementById('img-overlay');
+    const overlayImg = document.getElementById('img-overlay-img');
+    const closeBtn   = document.getElementById('img-overlay-close');
+    let scale = 1, panX = 0, panY = 0;
+    let isDragging = false, startX = 0, startY = 0;
+    function applyTransform() {
+      overlayImg.style.transform = `scale(${scale}) translate(${panX / scale}px, ${panY / scale}px)`;
+    }
+    document.querySelectorAll('.expandable-img').forEach(img => {
+      img.addEventListener('click', () => {
+        overlayImg.src = img.src;
+        scale = 1; panX = 0; panY = 0;
+        applyTransform();
+        overlay.classList.add('active');
+      });
+    });
+    function closeOverlay() { overlay.classList.remove('active'); }
+    closeBtn.addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeOverlay(); });
+    overlayImg.addEventListener('wheel', e => {
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -0.12 : 0.12;
+      scale = Math.min(Math.max(0.5, scale + delta), 6);
+      applyTransform();
+    }, { passive: false });
+    overlayImg.addEventListener('mousedown', e => {
+      isDragging = true; startX = e.clientX - panX; startY = e.clientY - panY;
+      overlayImg.style.cursor = 'grabbing'; e.preventDefault();
+    });
+    document.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      panX = e.clientX - startX; panY = e.clientY - startY;
+      applyTransform();
+    });
+    document.addEventListener('mouseup', () => { isDragging = false; overlayImg.style.cursor = 'grab'; });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
+  </script>
+
+</body>
+</html>

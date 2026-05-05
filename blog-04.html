@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04 Research, Frameworks & Field Trips — The Living Record</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Image overlay for expandable images -->
+  <div class="img-overlay" id="img-overlay">
+    <button class="img-overlay-close" id="img-overlay-close">✕ Close</button>
+    <div class="img-overlay-inner" id="img-overlay-inner">
+      <img id="img-overlay-img" src="" alt="">
+    </div>
+  </div>
+
+  <nav class="site-nav site-nav--dark">
+    <a href="index.html" class="nav-logo">The Living Record</a>
+    <ul class="nav-links">
+      <li><a href="blog-01.html">01</a></li>
+      <li><a href="blog-02.html">02</a></li>
+      <li><a href="blog-03.html">03</a></li>
+      <li><a href="blog-04.html" class="active">04</a></li>
+      <li><a href="blog-05.html">05</a></li>
+      <li><a href="blog-06.html">06</a></li>
+      <li><a href="blog-07.html">07</a></li>
+      <li><a href="blog-08.html">08</a></li>
+    </ul>
+  </nav>
+
+  <header class="post-header">
+    <a href="index.html" class="label back-link">← All Posts</a>
+    <h1>04 Research, Frameworks & Field Trips</h1>
+    <img class="post-header-diamond" src="assets/ideation-process/double-diamond-phases/problem-statement-double-diamond.png" alt="Problem Statement — Double Diamond">
+  </header>
+
+  <article class="post-content">
+
+    <span class="label post-date">April 29th, 2026</span>
+
+    <div class="problem-statement">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:0.2rem;"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+      <p>How might we create an exhibit that allows visitors to interact with the collected ecological data, the gardens, and with the museum itself?</p>
+    </div>
+
+    <h2>Exhibit Research</h2>
+    <p>Before we could design anything, we needed to understand what good exhibit design looked like in practice. We started with research. The Smithsonian's exhibit development framework gave us a useful structure. It centers on a single big idea, supported by key messages and critical questions that the exhibit should answer for visitors.</p>
+
+    <div class="img-text-pair" style="margin-bottom: 0.5rem;">
+      <p>Alongside that, we came across the IPOP model, which argues that visitors come to museums with four different orientations: some are drawn to <strong>Ideas</strong> (abstract thinking), some to <strong>People</strong> (emotional connection), some to <strong>Objects</strong> (visual aesthetics), and some to <strong>Physical</strong> experiences (multisensory engagement). A well-designed exhibit has to work for all four types at once. That framing became a lens we kept returning to throughout the rest of the project.</p>
+      <div style="width:45%; flex-shrink:0;">
+        <img class="expandable-img" data-overlay-bg="white" src="assets/ipop-model.png" alt="IPOP Model" style="width:100%; display:block; border-radius:3px;">
+        <span class="caption">IPOP Model</span>
+      </div>
+    </div>
+
+    <p>But research only gets you so far. We needed to go out and see things.</p>
+
+    <h2>Field Trips</h2>
+    <p>The first trip was to Outernet London. It showed us what immersion could actually feel like when it was done well, and gave us an idea of what we wanted to aim for.</p>
+
+    <div class="img-row" style="height:auto; align-items:stretch;">
+      <div style="flex:1; min-width:0;">
+        <video class="video-inline" src="assets/outernet-movie.MOV" muted loop playsinline autoplay style="height:100%; object-fit:cover;" id="outernet-vid"></video>
+      </div>
+      <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:0.75rem;">
+        <img src="assets/outernet-inspo2.png" alt="Outernet inspiration" style="width:100%; border-radius:3px; object-fit:cover; flex:1;">
+        <img src="assets/outernet-inspo3.png" alt="Outernet inspiration" style="width:100%; border-radius:3px; object-fit:cover; flex:1;">
+      </div>
+    </div>
+    <span class="caption">Outernet London — Inspiration Visit</span>
+
+    <p>The second trip was back to the Natural History Museum itself, this time with a structured observation framework. Using the Robson framework as a guide, we catalogued interaction types (touch screen kiosks, physical controls, video screens, static text, animatronics, immersive rooms, physical 3D models, and audio recordings), visitor flow (mix of open exploration spaces and single-route exhibits), and demographics (large school groups, international couples and families) which helped confirm our target audience.</p>
+
+    <div class="video-inline-wrap" style="overflow:hidden; height:280%; border-radius:3px; aspect-ratio:3/2;">
+      <video src="assets/ideation-process/inspiration-images/nhm-dinosaur.MOV" muted loop playsinline autoplay id="dinosaur-vid" style="width:100%; height:125%; object-fit:cover; object-position: center; display:block;"></video>
+    </div>
+    <span class="caption">Natural History Museum — Observation Visit</span>
+
+    <p>More on how these observations fed into the specifics of our design in the next post.</p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="blog-03.html" class="post-nav-link">← 03 Previous</a>
+    <a href="blog-05.html" class="post-nav-link">05 Next →</a>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="label">The Living Record — INM 391 Creativity in Design</span>
+  </footer>
+
+  <script>
+    // Show controls on hover for autoplay videos
+    document.querySelectorAll('video[autoplay]').forEach(v => {
+      v.addEventListener('mouseenter', () => v.setAttribute('controls', ''));
+      v.addEventListener('mouseleave', () => v.removeAttribute('controls'));
+    });
+
+    // Expandable images
+    const overlay    = document.getElementById('img-overlay');
+    const overlayImg = document.getElementById('img-overlay-img');
+    const closeBtn   = document.getElementById('img-overlay-close');
+    let scale = 1, panX = 0, panY = 0;
+    let isDragging = false, startX = 0, startY = 0;
+    function applyTransform() {
+      overlayImg.style.transform = `scale(${scale}) translate(${panX / scale}px, ${panY / scale}px)`;
+    }
+    const overlayInner = document.getElementById('img-overlay-inner');
+    document.querySelectorAll('.expandable-img').forEach(img => {
+      img.addEventListener('click', () => {
+        overlayImg.src = img.src;
+        scale = 1; panX = 0; panY = 0;
+        applyTransform();
+        overlay.classList.add('active');
+        overlayInner.classList.toggle('white-bg', img.dataset.overlayBg === 'white');
+      });
+    });
+    function closeOverlay() { overlay.classList.remove('active'); }
+    closeBtn.addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeOverlay(); });
+    overlayImg.addEventListener('wheel', e => {
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -0.12 : 0.12;
+      scale = Math.min(Math.max(0.5, scale + delta), 6);
+      applyTransform();
+    }, { passive: false });
+    overlayImg.addEventListener('mousedown', e => {
+      isDragging = true; startX = e.clientX - panX; startY = e.clientY - panY;
+      overlayImg.style.cursor = 'grabbing'; e.preventDefault();
+    });
+    document.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      panX = e.clientX - startX; panY = e.clientY - startY;
+      applyTransform();
+    });
+    document.addEventListener('mouseup', () => { isDragging = false; overlayImg.style.cursor = 'grab'; });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
+  </script>
+
+</body>
+</html>

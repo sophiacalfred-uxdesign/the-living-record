@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Living Record</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">The Living Record</a>
+    <ul class="nav-links">
+      <li><a href="blog-01.html">01</a></li>
+      <li><a href="blog-02.html">02</a></li>
+      <li><a href="blog-03.html">03</a></li>
+      <li><a href="blog-04.html">04</a></li>
+      <li><a href="blog-05.html">05</a></li>
+      <li><a href="blog-06.html">06</a></li>
+      <li><a href="blog-07.html">07</a></li>
+      <li><a href="blog-08.html">08</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1 class="hero-title">Designing the Living Record</h1>
+  </section>
+
+  <main class="blog-section">
+    <span class="label section-label">The Blog</span>
+    <div class="blog-grid">
+
+      <a class="card" href="blog-01.html">
+        <img class="card-img" src="assets/natural-history-musem3.png" alt="Getting Started">
+        <div class="card-body">
+          <span class="label card-date">January 27th, 2026</span>
+          <h2>01 Getting Started: How, Why, What</h2>
+          <p class="card-excerpt">Starting off this semester, my main goal is to expand my creative practice with a mix of co-design, communication, writing, and AI.</p>
+          <span class="read-more">Read more →</span>
+        </div>
+      </a>
+
+      <a class="card" href="blog-02.html">
+        <img class="card-img" src="assets/blog2/research-moodboard.png" alt="Understanding the Problem Space">
+        <div class="card-body">
+          <span class="label card-date">April 26th, 2026</span>
+          <h2>02 Understanding the Problem Space</h2>
+          <p class="card-excerpt">Exploring the landscape of the brief — what the Natural History Museum gardens have to say, and how to listen.</p>
+          <span class="read-more">Read more →</span>
+        </div>
+      </a>
+
+      <a class="card" href="blog-03.html">
+        <img class="card-img" src="assets/ideation-process/brain-write-affinity-diagram.png" alt="Defining the Problem Space">
+        <div class="card-body">
+          <span class="label card-date">April 27th, 2026</span>
+          <h2>03 Defining the Problem Space</h2>
+          <p class="card-excerpt">From 60 answers to a direction — how brainwriting and affinity mapping helped us move from understanding to ideas.</p>
+          <span class="read-more">Read more →</span>
+        </div>
+      </a>
+
+      <a class="card" href="blog-04.html">
+        <video class="card-img" src="assets/outernet-movie.MOV" muted loop playsinline autoplay style="object-fit:cover;"></video>
+        <div class="card-body">
+          <span class="label card-date">April 29th, 2026</span>
+          <h2>04 Research, Frameworks & Field Trips</h2>
+          <p class="card-excerpt">Grounding our exhibit concept in research — the Smithsonian framework, the IPOP model, and two field visits.</p>
+          <span class="read-more">Read more →</span>
+        </div>
+      </a>
+
+      <a class="card" href="blog-05.html">
+        <img class="card-img" src="assets/micro-to-macro-sketc1.png" alt="Specifying our Exhibit Part 1" style="object-position: bottom;">
+        <div class="card-body">
+          <span class="label card-date">May 1st, 2026</span>
+          <h2>05 Specifying our Exhibit Part 1: Sketching</h2>
+          <p class="card-excerpt">How a messy notebook sketch on the bus home became the organizing logic for our entire exhibit.</p>
+          <span class="read-more">Read more →</span>
+        </div>
+      </a>
+
+      <a class="card" href="blog-06.html">
+        <img class="card-img" src="assets/ideation-process/sketches/garden-room-sketch.png" alt="Specifying our Exhibit Part 2">
+        <div class="card-body">
+          <span class="label card-date">May 3rd, 2026</span>
+          <h2>06 Specifying our Exhibit Part 2: The Details</h2>
+          <p class="card-excerpt">Crazy 8s, sketchnotes, storyboards, and the specification session that defined every room in the exhibit.</p>
+          <span class="read-more">Read more →</span>
+        </div>
+      </a>
+
+      <a class="card" href="blog-07.html">
+        <video class="card-img" src="assets/final-artifacts/living-record-cover-full.mov" muted loop playsinline autoplay style="object-fit:cover;"></video>
+        <div class="card-body">
+          <span class="label card-date">May 5th, 2026</span>
+          <h2>07 Building our Exhibit</h2>
+          <p class="card-excerpt">3D modelling, AI image generation, and prototyping the garden room interactions from scratch.</p>
+          <span class="read-more">Read more →</span>
+        </div>
+      </a>
+
+      <a class="card" href="blog-08.html">
+        <img class="card-img" src="assets/NHM-presentation.png" alt="Final: Presentation & Takeaways" style="object-position: center 001%;">
+        <div class="card-body">
+          <span class="label card-date">May 7th, 2026</span>
+          <h2>08 Final: Presentation & Takeaways</h2>
+          <p class="card-excerpt">Presenting at the Natural History Museum and reflecting on what eleven weeks of creative practice actually taught me.</p>
+          <span class="read-more">Read more →</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span class="label">The Living Record — INM 391 Creativity in Design</span>
+  </footer>
+
+  <script>
+    // ── Edit image positions here ─────────────────────────────────────────
+    // left/right/top/bottom are percentages of the hero section
+    // width/height are in pixels
+    // rot is rotation in degrees (negative = leans left, positive = leans right)
+    // delay is animation delay in seconds (stagger the float-in)
+    // hideOnMobile: true means the image is hidden on small screens
+    const HERO_IMAGES = [
+      { file: 'web/garden-room-sketch.jpg',          left:  2, top:    0, width: 300, rot: -4,   delay: 0.05, desc: 'Garden Room Sketch' },
+      { file: 'web/ant-sketch.jpg',                  right: 12, top:    5, width: 115, rot:  3.5, delay: 0.15, desc: 'Ant transition hallway sketch' },
+      { file: 'web/outernet3.jpg',                   left:  5, bottom: 17, width: 160, rot:  4,   delay: 0.22, hideOnMobile: true, desc: 'Outernet London' },
+      { file: 'web/exhibit-garden-room-still.jpg',   right: 7, top:   30, width: 255, rot:  5,   delay: 0.10, desc: 'Exhibit: Garden Room' },
+      { file: 'web/exhibit-model-still.jpg',         right: 2, bottom: 16, width: 370, rot: -3,   delay: 0.28, hideOnMobile: true, desc: 'Exhibit Model: Rendered' },
+      { file: 'web/translation-services-sketch.jpg', left: 26, top:    8, width: 150, rot: -6,   delay: 0.18, hideOnMobile: true, desc: 'Easy Translation Access' },
+      { file: 'web/brain-write-affinity-diagram.jpg', left: 43, top:   12, width: 110, rot:  0,   delay: 0.18, hideOnMobile: true, desc: 'Brainwrite Affinity Diagram' },
+      { file: 'web/natural-history-museum1.jpg',     right:26, bottom:  8, width: 238, rot:  4,   delay: 0.30, hideOnMobile: true, desc: 'Natural History Museum' },
+      { file: 'web/listening-sketch.jpg',            left: 24, bottom:  4, width: 150, rot: -3,   delay: 0.12, hideOnMobile: true, desc: 'Interaction Design Sketch' },
+      { file: 'web/ipop-model.jpg',                  left: 40, bottom: 16, width: 120, rot:  3,   delay: 0.12, hideOnMobile: true, desc: 'IPOP Model' },
+      { file: 'web/environmental-moodboard.jpg',     right:28, top:    7, width: 190, rot:  4,   delay: 0.20, hideOnMobile: true, desc: 'Environmental Moodboard' },
+      { file: 'web/exhibit-floor-plan.jpg',          left: 14, top:   44, width: 180, rot:  3,   delay: 0.32, hideOnMobile: true, desc: 'Exhibit Floor Plan' },
+    ];
+    // ─────────────────────────────────────────────────────────────────────
+
+    const hero  = document.querySelector('.hero');
+    const title = hero.querySelector('.hero-title');
+
+    const tooltip = document.createElement('div');
+    tooltip.className = 'gallery-tooltip';
+    document.body.appendChild(tooltip);
+
+    HERO_IMAGES.forEach(img => {
+      const wrap = document.createElement('div');
+      wrap.className = 'hero-img-wrap' + (img.hideOnMobile ? ' hero-img-hide-mobile' : '');
+
+      if ('left'   in img) wrap.style.left   = img.left   + '%';
+      if ('right'  in img) wrap.style.right  = img.right  + '%';
+      if ('top'    in img) wrap.style.top    = img.top    + '%';
+      if ('bottom' in img) wrap.style.bottom = img.bottom + '%';
+
+      wrap.style.setProperty('--rot', img.rot + 'deg');
+
+      const el = document.createElement('img');
+      el.className = 'hero-img';
+      el.src = `assets/${img.file}`;
+      el.alt = '';
+      el.style.width          = img.width + 'px';
+      el.style.animationDelay = img.delay + 's';
+      el.style.setProperty('--tx', ('right' in img ? 65 : -65) + 'px');
+      el.style.setProperty('--ty', ('bottom' in img ? 65 : -65) + 'px');
+
+      wrap.appendChild(el);
+
+      wrap.addEventListener('mouseenter', () => {
+        tooltip.textContent = img.desc;
+        tooltip.classList.add('visible');
+      });
+      wrap.addEventListener('mousemove', e => {
+        tooltip.style.left = (e.clientX + 16) + 'px';
+        tooltip.style.top  = (e.clientY - 44) + 'px';
+      });
+      wrap.addEventListener('mouseleave', () => {
+        tooltip.classList.remove('visible');
+      });
+
+      hero.insertBefore(wrap, title);
+    });
+  </script>
+
+</body>
+</html>

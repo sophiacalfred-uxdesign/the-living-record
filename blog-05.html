@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05 Specifying our Exhibit Part 1: Sketching — The Living Record</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Image overlay for expandable images -->
+  <div class="img-overlay" id="img-overlay">
+    <button class="img-overlay-close" id="img-overlay-close">✕ Close</button>
+    <div class="img-overlay-inner" id="img-overlay-inner">
+      <img id="img-overlay-img" src="" alt="">
+    </div>
+  </div>
+
+  <nav class="site-nav site-nav--dark">
+    <a href="index.html" class="nav-logo">The Living Record</a>
+    <ul class="nav-links">
+      <li><a href="blog-01.html">01</a></li>
+      <li><a href="blog-02.html">02</a></li>
+      <li><a href="blog-03.html">03</a></li>
+      <li><a href="blog-04.html">04</a></li>
+      <li><a href="blog-05.html" class="active">05</a></li>
+      <li><a href="blog-06.html">06</a></li>
+      <li><a href="blog-07.html">07</a></li>
+      <li><a href="blog-08.html">08</a></li>
+    </ul>
+  </nav>
+
+  <header class="post-header">
+    <a href="index.html" class="label back-link">← All Posts</a>
+    <h1>05 Specifying our Exhibit</h1>
+    <p class="post-subtitle">Part 1: Sketching as a Creative Practice</p>
+    <img class="post-header-diamond" src="assets/ideation-process/double-diamond-phases/3-develop-double-diamond.png" alt="Develop — Double Diamond">
+  </header>
+
+  <article class="post-content">
+
+    <span class="label post-date">May 1st, 2026</span>
+
+    <p>We had a problem statement, a framework, and a collection of field observations. What we didn't have yet was the idea: the organizing logic that would give our exhibit a shape and a story. How we got there was, in part, through sketching.</p>
+
+    <h2>Sketching as a Creative Tool</h2>
+    <p>Sketching as a creative practice has been one of the biggest takeaways for me from this module. I have some prior experience with fine arts (Studio Art minor in undergrad), but I hadn't picked up my sketchbook in years. Richard Banks' lecture on his design practice and the role of sketching inspired me to pick it up again. I wanted to challenge myself to not aim for something polished, but just work on externalizing ideas and thinking with my hands.</p>
+
+    <div class="img-text-pair">
+      <div style="width:45%; flex-shrink:0;">
+        <img class="expandable-img" src="assets/micro-to-macro-sketc1.png" alt="Micro to macro sketch" style="width:100%; display:block; border-radius:3px;">
+        <span class="caption">Micro to Macro — Early Sketch</span>
+      </div>
+      <p>So on the bus home after one of our team meetings, I took out my notebook and just started drawing some very messy, barely comprehensible sketches, and somewhere in those scrawls, an idea surfaced: what if the exhibit started at the smallest possible scale (DNA, microorganisms) and then gradually zoomed out, room by room, to the garden, then to London, then to the global picture? Micro to macro.</p>
+    </div>
+
+    <h2>Defining the Concept</h2>
+    <p>The next time our team met, we sat down to formalize our exhibit concept using the brief, our field observation notes, and the Smithsonian framework as a guide. We locked in the type of exhibit, our target audience, our purpose statement, and our main message.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Framework</th>
+          <th>Our Decision</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Type of Exhibit</td>
+          <td>Permanent and research led</td>
+        </tr>
+        <tr>
+          <td>Target Audience</td>
+          <td>International visitors</td>
+        </tr>
+        <tr>
+          <td>Purpose Statement</td>
+          <td>To propose a novel way for visitors to interact with the NHM's ecological data</td>
+        </tr>
+        <tr>
+          <td>Main Message</td>
+          <td>Changes in these gardens are representative of larger changes in the world</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>When it came to narrative organization, I shared the micro to macro idea from my sketch, and it fit. International visitors aren't necessarily interested in one garden in South Kensington, but they are interested in what that garden says about the planet they live on. The structure gave our exhibit a reason to exist beyond the museum's walls.</p>
+
+    <p>Sketching will be a tool that myself and my teammates continue to use throughout the process. More on that in the next post.</p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="blog-04.html" class="post-nav-link">← 04 Previous</a>
+    <a href="blog-06.html" class="post-nav-link">06 Next →</a>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="label">The Living Record — INM 391 Creativity in Design</span>
+  </footer>
+
+  <script>
+    const overlay    = document.getElementById('img-overlay');
+    const overlayImg = document.getElementById('img-overlay-img');
+    const closeBtn   = document.getElementById('img-overlay-close');
+    let scale = 1, panX = 0, panY = 0;
+    let isDragging = false, startX = 0, startY = 0;
+    function applyTransform() {
+      overlayImg.style.transform = `scale(${scale}) translate(${panX / scale}px, ${panY / scale}px)`;
+    }
+    document.querySelectorAll('.expandable-img').forEach(img => {
+      img.addEventListener('click', () => {
+        overlayImg.src = img.src;
+        scale = 1; panX = 0; panY = 0;
+        applyTransform();
+        overlay.classList.add('active');
+      });
+    });
+    function closeOverlay() { overlay.classList.remove('active'); }
+    closeBtn.addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeOverlay(); });
+    overlayImg.addEventListener('wheel', e => {
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -0.12 : 0.12;
+      scale = Math.min(Math.max(0.5, scale + delta), 6);
+      applyTransform();
+    }, { passive: false });
+    overlayImg.addEventListener('mousedown', e => {
+      isDragging = true; startX = e.clientX - panX; startY = e.clientY - panY;
+      overlayImg.style.cursor = 'grabbing'; e.preventDefault();
+    });
+    document.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      panX = e.clientX - startX; panY = e.clientY - startY;
+      applyTransform();
+    });
+    document.addEventListener('mouseup', () => { isDragging = false; overlayImg.style.cursor = 'grab'; });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
+  </script>
+
+</body>
+</html>

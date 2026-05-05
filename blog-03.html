@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03 Defining the Problem Space — The Living Record</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Image overlay for expandable images -->
+  <div class="img-overlay" id="img-overlay">
+    <button class="img-overlay-close" id="img-overlay-close">✕ Close</button>
+    <div class="img-overlay-inner" id="img-overlay-inner">
+      <img id="img-overlay-img" src="" alt="">
+    </div>
+  </div>
+
+  <nav class="site-nav site-nav--dark">
+    <a href="index.html" class="nav-logo">The Living Record</a>
+    <ul class="nav-links">
+      <li><a href="blog-01.html">01</a></li>
+      <li><a href="blog-02.html">02</a></li>
+      <li><a href="blog-03.html" class="active">03</a></li>
+      <li><a href="blog-04.html">04</a></li>
+      <li><a href="blog-05.html">05</a></li>
+      <li><a href="blog-06.html">06</a></li>
+      <li><a href="blog-07.html">07</a></li>
+      <li><a href="blog-08.html">08</a></li>
+    </ul>
+  </nav>
+
+  <header class="post-header">
+    <a href="index.html" class="label back-link">← All Posts</a>
+    <h1>03 Defining the Problem Space</h1>
+    <img class="post-header-diamond" src="assets/ideation-process/double-diamond-phases/2-define-double-diamond.png" alt="Define — Double Diamond">
+  </header>
+
+  <article class="post-content">
+
+    <span class="label post-date">April 27th, 2026</span>
+
+    <p>When I last left off, we had 60 answers to the question "What is the function of the NHM gardens?" and five overarching themes to show for it. We had a broad, shared understanding of the problem space. But understanding something broadly and knowing what to do about it are very different things.</p>
+
+    <h2>Ideation</h2>
+    <p>To begin generating ideas, we tested out different ideation techniques. Sydney ran the critical thinking with AI exercise from class, and the outputs she shared allowed us to engage with perspectives we hadn't considered: missing stakeholders, underlying assumptions, and questions we hadn't thought to ask.</p>
+
+    <div class="img-text-pair">
+      <p>For further ideation, Tom encouraged us to try techniques beyond what we'd done in other modules. We decided on a brainwriting exercise. Unlike Crazy 8s, which is individual, brainwriting is collaborative and sequential. Each person started writing ideas on a piece of paper, then passed it to the next person after two minutes where that person would pick up where they left left off, building on or departing from their ideas. We did two full cycles (twelve minutes total), reviewed what we had, then ran a third focused cycle of six minutes to hone in on the stronger threads.</p>
+      <div style="width:45%; flex-shrink:0;">
+        <div style="aspect-ratio:682/758; overflow:hidden; border-radius:3px;">
+          <img class="expandable-img" src="assets/brainwrite2.png" alt="Brainwriting exercise" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;">
+        </div>
+        <span class="caption">Brainwriting Exercise</span>
+      </div>
+    </div>
+
+    <p>I found it difficult to push myself to generate new ideas in such short bursts of time. However, the combination of my teammates' ideas already on the page and the time limit worked together to force divergent thinking. There was no time to stall or wait for ideas to come.</p>
+
+    <h2>Clustering</h2>
+    <p>After all three cycles, we put our ideas on sticky notes and clustered them by theme.</p>
+
+    <div class="img-text-pair">
+      <div style="width:45%; flex-shrink:0;">
+        <img class="expandable-img" src="assets/ideation-process/brain-write-affinity-diagram.png" alt="Brainwriting affinity diagram" style="width:100%; display:block; border-radius:3px;">
+        <span class="caption">Brainwriting: Affinity Clusters</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <p style="margin-bottom:0;">Categories emerged: digital twins, interactive experiences, data visualisation, VR. Sitting with those clusters, the ideas that excited us most were the ones that put visitors inside the data.</p>
+        <p style="margin-bottom:0;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:0.65rem;"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>An exhibit. An immersive, interactive exhibit inside the Natural History Museum itself.
+        </p>
+      </div>
+    </div>
+
+    <p>More on what that meant for our design direction in the next post.</p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="blog-02.html" class="post-nav-link">← 02 Previous</a>
+    <a href="blog-04.html" class="post-nav-link">04 Next →</a>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="label">The Living Record — INM 391 Creativity in Design</span>
+  </footer>
+
+  <script>
+    const overlay    = document.getElementById('img-overlay');
+    const overlayImg = document.getElementById('img-overlay-img');
+    const closeBtn   = document.getElementById('img-overlay-close');
+    let scale = 1, panX = 0, panY = 0;
+    let isDragging = false, startX = 0, startY = 0;
+    function applyTransform() {
+      overlayImg.style.transform = `scale(${scale}) translate(${panX / scale}px, ${panY / scale}px)`;
+    }
+    document.querySelectorAll('.expandable-img').forEach(img => {
+      img.addEventListener('click', () => {
+        overlayImg.src = img.src;
+        scale = 1; panX = 0; panY = 0;
+        applyTransform();
+        overlay.classList.add('active');
+      });
+    });
+    function closeOverlay() { overlay.classList.remove('active'); }
+    closeBtn.addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeOverlay(); });
+    overlayImg.addEventListener('wheel', e => {
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -0.12 : 0.12;
+      scale = Math.min(Math.max(0.5, scale + delta), 6);
+      applyTransform();
+    }, { passive: false });
+    overlayImg.addEventListener('mousedown', e => {
+      isDragging = true; startX = e.clientX - panX; startY = e.clientY - panY;
+      overlayImg.style.cursor = 'grabbing'; e.preventDefault();
+    });
+    document.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      panX = e.clientX - startX; panY = e.clientY - startY;
+      applyTransform();
+    });
+    document.addEventListener('mouseup', () => { isDragging = false; overlayImg.style.cursor = 'grab'; });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
+  </script>
+
+</body>
+</html>

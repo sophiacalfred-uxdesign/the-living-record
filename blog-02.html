@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02 Understanding the Problem Space — The Living Record</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Image overlay for expandable images -->
+  <div class="img-overlay" id="img-overlay">
+    <button class="img-overlay-close" id="img-overlay-close">✕ Close</button>
+    <div class="img-overlay-inner" id="img-overlay-inner">
+      <img id="img-overlay-img" src="" alt="">
+    </div>
+  </div>
+
+  <nav class="site-nav site-nav--dark">
+    <a href="index.html" class="nav-logo">The Living Record</a>
+    <ul class="nav-links">
+      <li><a href="blog-01.html">01</a></li>
+      <li><a href="blog-02.html" class="active">02</a></li>
+      <li><a href="blog-03.html">03</a></li>
+      <li><a href="blog-04.html">04</a></li>
+      <li><a href="blog-05.html">05</a></li>
+      <li><a href="blog-06.html">06</a></li>
+      <li><a href="blog-07.html">07</a></li>
+      <li><a href="blog-08.html">08</a></li>
+    </ul>
+  </nav>
+
+  <header class="post-header">
+    <a href="index.html" class="label back-link">← All Posts</a>
+    <h1>02 Understanding the Problem Space</h1>
+    <img class="post-header-diamond" src="assets/ideation-process/double-diamond-phases/1-discover-double-diamond.png" alt="Discover — Double Diamond">
+  </header>
+
+  <article class="post-content">
+
+    <span class="label post-date">April 26th, 2026</span>
+
+    <h2>Research</h2>
+    <p>Before we could begin designing anything, my team and I needed to understand the problem space. We started by individually compiling a set of sources about the Natural History Museum gardens, the Urban Nature Project, and the museum's broader work, and uploaded them into NotebookLM. From there, we each generated a podcast: a quick, conversational summary of the material we had read. This was a useful way to surface the key points.</p>
+
+    <h2>Finding Themes</h2>
+    <div class="img-text-pair">
+      <p>Once we had a shared baseline, we ran a more structured exercise. Each group member wrote down 20 answers to the question: What is the function of the Natural History Museum gardens? Working alone first was important, because it kept us from converging too early on the obvious answers. Together, that produced 60 statements ranging from "an education center" to "a wildlife research site."</p>
+      <div style="width:45%; flex-shrink:0;">
+        <img class="expandable-img" src="assets/blog2/education-moodboard.png" alt="Education Moodboard" style="width:100%; display:block; border-radius:3px;">
+        <span class="caption">Education Moodboard</span>
+      </div>
+    </div>
+
+    <div class="img-text-pair">
+      <div style="width:45%; flex-shrink:0;">
+        <img class="expandable-img" src="assets/blog2/thematic-analysis.png" alt="Thematic Analysis" style="width:100%; display:block; border-radius:3px;">
+        <span class="caption">Affinity Diagram: Museum Mission</span>
+      </div>
+      <p>We then carried out a thematic analysis of the full set of 60, grouping similar answers, identifying patterns, and naming the resulting clusters. Five overarching themes came out of the analysis: <strong>Education</strong>, <strong>Leisure</strong>, <strong>Research</strong>, <strong>Museum Mission</strong>, and <strong>Environmental</strong>. Each one captured a different aspect of the garden's relationship between the museum, the visitors, and the space itself.</p>
+    </div>
+
+    <h2>Moodboards</h2>
+    <p>To explore the themes further, we built a moodboard for each. I had expected the moodboards to be a one off output of the discovery phase, but throughout the rest of the project, we kept returning to specific images from those boards, using them as references for individual rooms, interactions, and design decisions. The themes told us what the gardens were about and the moodboards gave us a visual library to draw inspiration from.</p>
+
+    <div class="img-connection">
+      <div class="img-connection-item">
+        <img class="expandable-img" src="assets/blog2/inspo2.jpg" alt="Education moodboard inspiration image">
+        <span class="caption">Education Moodboard — Inspiration</span>
+      </div>
+      <div class="img-connection-arrow">→</div>
+      <div class="img-connection-item">
+        <img class="expandable-img" src="assets/blog2/exhibit-garden-room-still.png" alt="Exhibit: Garden Room">
+        <span class="caption">Final Output — Garden Room</span>
+      </div>
+    </div>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="blog-01.html" class="post-nav-link">← 01 Previous</a>
+    <a href="blog-03.html" class="post-nav-link">03 Next →</a>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="label">The Living Record — INM 391 Creativity in Design</span>
+  </footer>
+
+  <script>
+    const overlay    = document.getElementById('img-overlay');
+    const overlayImg = document.getElementById('img-overlay-img');
+    const closeBtn   = document.getElementById('img-overlay-close');
+    let scale = 1, panX = 0, panY = 0;
+    let isDragging = false, startX = 0, startY = 0;
+    function applyTransform() {
+      overlayImg.style.transform = `scale(${scale}) translate(${panX / scale}px, ${panY / scale}px)`;
+    }
+    document.querySelectorAll('.expandable-img').forEach(img => {
+      img.addEventListener('click', () => {
+        overlayImg.src = img.src;
+        scale = 1; panX = 0; panY = 0;
+        applyTransform();
+        overlay.classList.add('active');
+      });
+    });
+    function closeOverlay() { overlay.classList.remove('active'); }
+    closeBtn.addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeOverlay(); });
+    overlayImg.addEventListener('wheel', e => {
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -0.12 : 0.12;
+      scale = Math.min(Math.max(0.5, scale + delta), 6);
+      applyTransform();
+    }, { passive: false });
+    overlayImg.addEventListener('mousedown', e => {
+      isDragging = true; startX = e.clientX - panX; startY = e.clientY - panY;
+      overlayImg.style.cursor = 'grabbing'; e.preventDefault();
+    });
+    document.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      panX = e.clientX - startX; panY = e.clientY - startY;
+      applyTransform();
+    });
+    document.addEventListener('mouseup', () => { isDragging = false; overlayImg.style.cursor = 'grab'; });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
+  </script>
+
+</body>
+</html>

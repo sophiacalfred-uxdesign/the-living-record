@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01 Getting Started: How, Why, What — The Living Record</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+  <nav class="site-nav site-nav--dark">
+    <a href="index.html" class="nav-logo">The Living Record</a>
+    <ul class="nav-links">
+      <li><a href="blog-01.html" class="active">01</a></li>
+      <li><a href="blog-02.html">02</a></li>
+      <li><a href="blog-03.html">03</a></li>
+      <li><a href="blog-04.html">04</a></li>
+      <li><a href="blog-05.html">05</a></li>
+      <li><a href="blog-06.html">06</a></li>
+      <li><a href="blog-07.html">07</a></li>
+      <li><a href="blog-08.html">08</a></li>
+    </ul>
+  </nav>
+
+  <header class="post-header post-header--bg-img" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/natural-history-musem3.png');">
+    <a href="index.html" class="label back-link">← All Posts</a>
+    <h1>01 Getting Started: How, Why, What</h1>
+  </header>
+
+  <article class="post-content">
+
+    <span class="label post-date">January 27th, 2026</span>
+
+    <p>Starting off this semester, in this module, my main goal is to expand my creative practice.</p>
+
+    <h2>How</h2>
+    <p>How would I like to tackle this work? With a mix of co-design, communication, writing, and AI. I'm excited about the new tools that are being created every day and their capacity to expand what's possible for me to create.</p>
+
+    <h2>Why</h2>
+    <p>What drives me? I really enjoy the process of making functional art. Any type of functional design excites me: ceramics, sewing, architecture, UX design. But almost all of that work has been for me or academic projects where the design never actually got used by anyone but me and my marker. The closest I've come to designing for real users is when I taught English to elementary school kids. I was designing lessons for a target user, crafting things that were fun and beautiful for a very specific purpose. That work is what I felt most fulfilled by, and I want more of it.</p>
+
+    <div id="gallery-root"></div>
+
+    <h2>What</h2>
+    <p>What do I want to learn? How to take a vague brief and translate it into something interesting and creative. I'm particularly looking forward to working with this The Natural History Museum brief because it's a real audience, a real institution, and a real problem.</p>
+
+    <div class="note-future">
+      <span class="label note-label">A Note from the Future</span>
+      <p>I wrote this blog post right at the start of the semester. Now, as I'm sitting down to compile the blog, I've decided to put some of what I've learned to the test. Not only will this blog be a practice in reflecting and communicating my design work, I also have decided to vibe code this blog site as a way to continue working with and learning how to incorporate AI into my work. Stay tuned for more reflection on my experience using AI throughout the Living Record Project and in the creation of this blog.</p>
+    </div>
+
+  </article>
+
+  <nav class="post-nav">
+    <span class="post-nav-spacer"></span>
+    <a href="blog-02.html" class="post-nav-link">02 Next →</a>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="label">The Living Record — INM 391 Creativity in Design</span>
+  </footer>
+
+  <script type="text/babel">
+    // ── Edit gallery images here ──────────────────────────────────────────
+    // left, top: position in pixels within the gallery container
+    // width:     image width in pixels (height stays proportional)
+    // desc:      tooltip text on hover
+    const GALLERY_IMAGES = [
+      { file: 'blog1/architecture-model 1.png', left:   50, top: -10, width: 280, desc: 'An architecture model from my undergraduate degree in Architectural Studies.' },
+      { file: 'blog1/sewing.png',               left: 355, top:   -15, width: 180, desc: 'A hand sewn vest — pattern drafted and stitched entirely from scratch.' },
+      { file: 'blog1/teaching-material2 1.png', left:   50, top: 180, width: 140, desc: 'An ESL worksheet I designed for elementary school students learning grammar.' },
+      { file: 'blog1/ux-design.png',            left: 222, top: 200, width: 110, desc: 'A journaling app I designed and prototyped.' },
+      { file: 'blog1/ceramic-vase 1.png',       left: 350, top: 200, width: 160, desc: 'A handmade vase made at a local pottery studio.' },
+    ];
+
+    const CONTAINER_HEIGHT = 410; // px — increase if images are getting cut off at the bottom
+    // ─────────────────────────────────────────────────────────────────────
+
+    function Gallery({ images }) {
+      const [tip, setTip] = React.useState({ show: false, text: '', x: 0, y: 0 });
+
+      return (
+        <>
+          <div className="gallery" style={{ height: CONTAINER_HEIGHT }}>
+            {images.map((img, i) => (
+              <div
+                key={i}
+                className="gallery-item"
+                style={{ left: img.left, top: img.top, width: img.width }}
+                onMouseEnter={e => setTip({ show: true, text: img.desc, x: e.clientX + 16, y: e.clientY - 44 })}
+                onMouseMove={e => setTip(t => ({ ...t, x: e.clientX + 16, y: e.clientY - 44 }))}
+                onMouseLeave={() => setTip(t => ({ ...t, show: false }))}
+              >
+                <img src={`assets/${img.file}`} alt="" />
+              </div>
+            ))}
+          </div>
+
+          {tip.show && (
+            <div
+              className="gallery-tooltip visible"
+              style={{ left: tip.x, top: tip.y }}
+            >
+              {tip.text}
+            </div>
+          )}
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('gallery-root')).render(
+      <Gallery images={GALLERY_IMAGES} />
+    );
+  </script>
+
+</body>
+</html>

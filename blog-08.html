@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08 Final: Presentation & Takeaways — The Living Record</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Image overlay for expandable images -->
+  <div class="img-overlay" id="img-overlay">
+    <button class="img-overlay-close" id="img-overlay-close">✕ Close</button>
+    <div class="img-overlay-inner" id="img-overlay-inner">
+      <img id="img-overlay-img" src="" alt="">
+    </div>
+  </div>
+
+  <nav class="site-nav site-nav--dark">
+    <a href="index.html" class="nav-logo">The Living Record</a>
+    <ul class="nav-links">
+      <li><a href="blog-01.html">01</a></li>
+      <li><a href="blog-02.html">02</a></li>
+      <li><a href="blog-03.html">03</a></li>
+      <li><a href="blog-04.html">04</a></li>
+      <li><a href="blog-05.html">05</a></li>
+      <li><a href="blog-06.html">06</a></li>
+      <li><a href="blog-07.html">07</a></li>
+      <li><a href="blog-08.html" class="active">08</a></li>
+    </ul>
+  </nav>
+
+  <header class="post-header">
+    <a href="index.html" class="label back-link">← All Posts</a>
+    <h1>08 Final: Presentation & Takeaways</h1>
+    <img class="post-header-diamond" src="assets/ideation-process/double-diamond-phases/4-deliver-double-diamond.png" alt="Deliver — Double Diamond">
+  </header>
+
+  <article class="post-content">
+
+    <span class="label post-date">May 7th, 2026</span>
+
+    <p>At the start of this module, I wrote about what I was hoping to get from it: a more intentional design practice, experience working in a real-world brief context, and a better understanding of how to use AI as a creative tool. Eleven weeks later, with a finished exhibit proposal and a final presentation delivered at the Natural History Museum itself, I want to reflect on whether that happened, as well as other unexpected takeaways.</p>
+
+    <h2>The Presentation</h2>
+    <p>Starting with the final presentation, which was a design problem in and of itself. Tom's lecture on communication in design framed it well: the medium is the message. The way you choose to communicate your work shapes how it's received, regardless of the quality of the work itself. That meant thinking carefully about who our audience was (the NHM research and UX team), what we needed them to understand (the design and the process behind it), and what medium would carry that most effectively.</p>
+
+    <div class="img-text-pair">
+      <p>Despite low attendance from the NHM team, presenting there felt meaningful. The feedback that our presentation and deliverables were of professional quality was genuinely gratifying, not just of the work that we'd done, but that we were communicating what we intended it to communicate.</p>
+      <div style="width:45%; flex-shrink:0;">
+        <img class="expandable-img" src="assets/presentation.png" alt="Final presentation" style="width:100%; display:block; border-radius:3px;">
+        <span class="caption">Final Presentation — NHM</span>
+      </div>
+    </div>
+
+    <h2>Takeaways</h2>
+    <p>Through this blog, by writing and reflecting, I've discovered an integral concept about creativity in design: you have to add structure. The tools and frameworks that we used throughout thsi project (the double diamond, the Smithsonian exhibit structure, IPOP model, the Robson framework, brainwriting) were all scaffolding that made creativity possible. Without them, a brief this open would have stayed open. The skills I'm taking away feel the same: sketching as a thinking tool, deliberate AI prompting, vibe coding, communicating design, all of them are ways of providing structure and support in the right places and expanding what we, as designers, are able to make because of it.</p>
+
+    <img class="post-inline-img expandable-img" src="assets/NHM-presentation.png" alt="NHM Presentation">
+    <span class="caption">The Living Record — Natural History Museum</span>
+
+    <p>I came into this module wanting to be a more intentional designer. I think I'm leaving as one.</p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="blog-07.html" class="post-nav-link">← 07 Previous</a>
+    <span class="post-nav-spacer"></span>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="label">The Living Record — INM 391 Creativity in Design</span>
+  </footer>
+
+  <script>
+    const overlay    = document.getElementById('img-overlay');
+    const overlayImg = document.getElementById('img-overlay-img');
+    const closeBtn   = document.getElementById('img-overlay-close');
+    let scale = 1, panX = 0, panY = 0;
+    let isDragging = false, startX = 0, startY = 0;
+    function applyTransform() {
+      overlayImg.style.transform = `scale(${scale}) translate(${panX / scale}px, ${panY / scale}px)`;
+    }
+    document.querySelectorAll('.expandable-img').forEach(img => {
+      img.addEventListener('click', () => {
+        overlayImg.src = img.src;
+        scale = 1; panX = 0; panY = 0;
+        applyTransform();
+        overlay.classList.add('active');
+      });
+    });
+    function closeOverlay() { overlay.classList.remove('active'); }
+    closeBtn.addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeOverlay(); });
+    overlayImg.addEventListener('wheel', e => {
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -0.12 : 0.12;
+      scale = Math.min(Math.max(0.5, scale + delta), 6);
+      applyTransform();
+    }, { passive: false });
+    overlayImg.addEventListener('mousedown', e => {
+      isDragging = true; startX = e.clientX - panX; startY = e.clientY - panY;
+      overlayImg.style.cursor = 'grabbing'; e.preventDefault();
+    });
+    document.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      panX = e.clientX - startX; panY = e.clientY - startY;
+      applyTransform();
+    });
+    document.addEventListener('mouseup', () => { isDragging = false; overlayImg.style.cursor = 'grab'; });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
+  </script>
+
+</body>
+</html>
