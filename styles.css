@@ -136,6 +136,26 @@ strong {
   padding: 0 1rem;
 }
 
+.hero-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest);
+  opacity: 0.6;
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
 /* ─── HERO IMAGES ─────────────────────────────────────── */
 
 @keyframes floatIn {
@@ -728,7 +748,9 @@ strong {
 .site-footer {
   background: var(--forest);
   padding: 2rem 2.5rem;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .site-footer .label {
